@@ -2,19 +2,57 @@ localhost: moi truong gia lap cho lap trinh vien, chi chay tai may tinh cua ban
 
 port: phan chia cac ung dung dang chay tren localhost
 
-
+=====================
 
 Toolchains:
-Hot reloading: save code tự động load lại trang
-Babel Compiler: giúp code được version của các loại js khác nhau
-Webpack: giúp nén code lại, tối ưu code làm cho trình duyệt nhanh hơn.
-Ready for production
+    Hot reloading: save code tự động load lại trang
+    Babel Compiler: giúp code được version của các loại js khác nhau
+    Webpack: giúp nén code lại, tối ưu code làm cho trình duyệt nhanh hơn.
+    Ready for production
 
+=====================
 
 git (https://prnt.sc/LOvWOH6PrpDy)
+    git init
+    git add .
+    git commit -m "noi dung"
+    git remote... paste cau lenh tren github.com
+    git push origin master 
 
-git init
-git add .
-git commit -m "noi dung"
-git remote... paste cau lenh tren github.com
-git push origin master 
+=====================
+
+How React WOrks?
+    React App la Single Page Application
+    browser chi chay 1 file: index.html
+    khi đổi trang thì react sẽ thay thế component của file html khác cho component của file index.html
+
+1. dịch code - babel compiler
+require
+import const
+
+2. tối ưu code, nén thành 1 vài file: css/js: webpack (lấy tất cả component bỏ vào id="root")
+
+create-react-app đã bao gồm webpack
+
+
+public chứa những file công khai
+
+src chứa những file được bảo vệ, không cho ngkhac thấy
+
+====================
+
+React component
+
+- Heder, Sidebar, Sponsored, Feed, Story (mỗi story là 1 component)
+
+- Được cộng gộp bởi nhiều component, có thể tái sử dụng
+
+- tên file viết hoa MyComponent.js
+
+- JSX cho phep viet js trong html 
+
+
+. và .. khác nhau thế nào? 
+
+. ám chỉ những thư mục cùng cấp, lấy đc tại thư mục hiện tại
+.. ám chỉ đến thư mục cha
