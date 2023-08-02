@@ -1,0 +1,11 @@
+localhost: moi truong gia lap cho lap trinh vien, chi chay tai may tinh cua ban
+
+port: phan chia cac ung dung dang chay tren localhost
+
+
+
+Toolchains:
+Hot reloading: save code tự động load lại trang
+Babel Compiler: giúp code được version của các loại js khác nhau
+Webpack: giúp nén code lại, tối ưu code làm cho trình duyệt nhanh hơn.
+Ready for production
