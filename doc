@@ -66,3 +66,8 @@ Component State
 
 "this" la dai dien cho 1 object, class dang sử dụng
 để truy cập 1 thuộc tính của object
+
+
+====================
+
+react dom event - SyntheticEvent - Supported Events
