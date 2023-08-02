@@ -9,3 +9,12 @@ Hot reloading: save code tự động load lại trang
 Babel Compiler: giúp code được version của các loại js khác nhau
 Webpack: giúp nén code lại, tối ưu code làm cho trình duyệt nhanh hơn.
 Ready for production
+
+
+git (https://prnt.sc/LOvWOH6PrpDy)
+
+git init
+git add .
+git commit -m "noi dung"
+git remote... paste cau lenh tren github.com
+git push origin master 
