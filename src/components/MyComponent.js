@@ -12,24 +12,31 @@ class MyComponent extends React.Component { // ke thua tinh nag cua react compon
     };
 
     handleClick(event) { // event: do web api tạo ra
-        console.log('My name is',this.state.name)
+        console.log('Random ', Math.floor((Math.random()*100)+1));
+
+        this.setState({
+            name: 'Harry',
+            age: Math.floor((Math.random()*100) + 1)
+        })
     }
 
     handleOnMouseOver(event) {
-        console.log(event.pageX);
+        // console.log(event.pageX);
     }
 
     render() { //tap hop nhung nguyen lieu, duc ket duoc 1 cai gi day
         return (
             <div>
-                my first component <br></br>
-                {Math.random()}
+                my first component 
+                <br></br>
                 <br></br>
                 My name is {this.state.name} and i'm from {this.state.address}, I'm {this.state.age} years old!
 
                 <br></br>
-                <button onClick={this.handleClick}>Click me</button>
-                <button onMouseOver={this.handleOnMouseOver}>Hover me</button>
+                <br></br>
+
+                <button onClick={(event) => { this.handleClick(event) }}>Click me</button>
+                <button onMouseOver={(event) => { this.handleOnMouseOver(event) }}>Hover me</button>
             </div>
         );
     }
