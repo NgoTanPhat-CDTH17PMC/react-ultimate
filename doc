@@ -51,8 +51,18 @@ React component
 
 - JSX cho phep viet js trong html 
 
-
-. và .. khác nhau thế nào? 
+- . và .. khác nhau thế nào? 
 
 . ám chỉ những thư mục cùng cấp, lấy đc tại thư mục hiện tại
 .. ám chỉ đến thư mục cha
+
+====================
+
+Component State
+    Là js object
+    sync giữa state và giao diện
+    là cách react kiểm soát data của component
+    bản chất là 1 object của javascript nên phải dùng {}
+
+"this" la dai dien cho 1 object, class dang sử dụng
+để truy cập 1 thuộc tính của object
