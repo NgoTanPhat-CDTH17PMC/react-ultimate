@@ -2,7 +2,7 @@
 // function component (hook)
 
 import React from "react"; // import thư viện react
-import UserInfo from "./UserInfo";
+import AddUserInfo from "./AddUserInfo";
 import DisplayInfo from "./DisplayInfo";
 
 class MyComponent extends React.Component {
@@ -16,13 +16,18 @@ class MyComponent extends React.Component {
     ],
   };
 
+  handleAddNewUser = (userObj) => {
+    this.setState({
+      listUsers: [userObj, ...this.state.listUsers],
+    });
+  };
+
   render() {
     //tap hop nhung nguyen lieu, duc ket duoc 1 cai gi day
-    //
     return (
       <div>
         <br></br>
-        <UserInfo></UserInfo>
+        <AddUserInfo handleAddNewUser={this.handleAddNewUser}></AddUserInfo>
         <hr />
         <br></br>
         <DisplayInfo listUsers={this.state.listUsers}></DisplayInfo>

@@ -74,8 +74,16 @@ react dom event - SyntheticEvent - Supported Events
 
 ===================
 
-DRY: don't repeat youself
+DRY: dont repeat youself
 
 ===================
 
 react render twwice = Strict Mode
+
+===================
+
+this.function() -> co nghia la goi den function do nen luc load page se kich hoat func do ngay
+
+this.function -> co nghia la tham chieu den function do vi chi can truyen data vao function thoi
+
+-> khi tryen tu cha sang con thi khong duoc dong mo ngoac
