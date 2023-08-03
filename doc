@@ -16,7 +16,7 @@ git (https://prnt.sc/LOvWOH6PrpDy)
     git init
     git add .
     git commit -m "noi dung"
-    git remote... paste cau lenh tren github.com
+    git remote add origin https://github.com/NgoTanPhat-CDTH17PMC/react-ultimate.git
     git push origin master 
 
 =====================
