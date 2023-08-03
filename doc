@@ -75,3 +75,7 @@ react dom event - SyntheticEvent - Supported Events
 ===================
 
 DRY: don't repeat youself
+
+===================
+
+react render twwice = Strict Mode
