@@ -1,22 +1,28 @@
 // class component (co ban ban dau)
-// function component (hook) 
+// function component (hook)
 
-import React from 'react'; // import thư viện react
-import UserInfo from './UserInfo';
+import React from "react"; // import thư viện react
+import UserInfo from "./UserInfo";
+import DisplayInfo from "./DisplayInfo";
 
-class MyComponent extends React.Component { // ke thua tinh nag cua react component
+class MyComponent extends React.Component {
+  // ke thua tinh nag cua react component
 
-    render() { //tap hop nhung nguyen lieu, duc ket duoc 1 cai gi day
-        return (
-            <div>
-                my first component 
-                <br></br>
-                <br></br>
-
-                <UserInfo></UserInfo>
-            </div>
-        );
-    }
+  render() {
+    //tap hop nhung nguyen lieu, duc ket duoc 1 cai gi day
+    return (
+      <div>
+        my first component
+        <br></br>
+        <br></br>
+        <UserInfo></UserInfo>
+        <hr />
+        <br></br>
+        <br></br>
+        <DisplayInfo name="Hoi Dan IT" age={26}></DisplayInfo>
+      </div>
+    );
+  }
 }
 
 export default MyComponent;
