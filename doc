@@ -71,3 +71,7 @@ Component State
 ====================
 
 react dom event - SyntheticEvent - Supported Events
+
+===================
+
+DRY: don't repeat youself

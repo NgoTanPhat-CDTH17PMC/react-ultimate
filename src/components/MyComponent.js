@@ -8,18 +8,24 @@ import DisplayInfo from "./DisplayInfo";
 class MyComponent extends React.Component {
   // ke thua tinh nag cua react component
 
+  state = {
+    listUsers: [
+      { id: 1, name: "Hoi Dan IT", age: "30" },
+      { id: 2, name: "Eric", age: "15" },
+      { id: 3, name: "Harry", age: "55" },
+    ],
+  };
+
   render() {
     //tap hop nhung nguyen lieu, duc ket duoc 1 cai gi day
+    //
     return (
       <div>
-        my first component
-        <br></br>
         <br></br>
         <UserInfo></UserInfo>
         <hr />
         <br></br>
-        <br></br>
-        <DisplayInfo name="Hoi Dan IT" age={26}></DisplayInfo>
+        <DisplayInfo listUsers={this.state.listUsers}></DisplayInfo>
       </div>
     );
   }
