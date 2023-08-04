@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DisplayInfo.scss";
 import logo from "./../logo.svg";
 
@@ -91,9 +91,23 @@ const DisplayInfo = (props) => {
   // doi voi function component thì props tự động truyền vào. CÒn class component thì phải constructor để nhận props từ thằng component cha
   const { listUsers } = props;
 
+  const [isShowHideListUser, setShowHideListUser] = useState(true);
+  // cai o tren goi la destructuring assigment
+
+  // === this.state = { isShowHideListUser: true }
+
+  const handleShowHideListUser = () => {
+    setShowHideListUser(!isShowHideListUser);
+  };
+
   return (
     <div className="display-info-container">
-      {true && (
+      <div>
+        <span onClick={() => handleShowHideListUser()}>
+          {isShowHideListUser ? "Hide" : "Show"} list user
+        </span>
+      </div>
+      {isShowHideListUser && (
         <>
           {listUsers.map((user, index) => {
             return (
