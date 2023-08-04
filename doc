@@ -87,3 +87,11 @@ this.function() -> co nghia la goi den function do nen luc load page se kich hoa
 this.function -> co nghia la tham chieu den function do vi chi can truyen data vao function thoi
 
 -> khi tryen tu cha sang con thi khong duoc dong mo ngoac
+
+=====================
+
+
+component va html
+
+template + logic js = component
+
