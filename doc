@@ -154,3 +154,20 @@ useEffect (componentDidMount): tat ca nhung gi lam anh huong den ung dung thi se
 =====================================
 
 thay doi props + setState thi se render lai giao dien
+
+
+====================================
+
+Tại sao phải sử dụng Hook
+
+=> giúp code ít đi, tái sử dụng code
+
+khi nào dùng hook
+
+=> Dành cho react >= 16.8  (>2018)
+
+
+Hook là gì 
+
+là cái móc câu, móc vào component, khi nào cần thì nó sẽ gọi tới.
+dùng function component
