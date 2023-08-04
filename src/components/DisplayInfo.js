@@ -3,9 +3,33 @@ import "./DisplayInfo.scss";
 import logo from "./../logo.svg";
 
 class DisplayInfo extends React.Component {
-  state = {
-    isShowListUser: true,
-  };
+  // REACT CLASS CONSTRUCTOR
+  constructor(props) {
+    console.log(">> call constructor");
+
+    // cbi du lieu cho component (chay dau tien truoc render)
+    super(props);
+    // ke thua props tu component cha xuong
+    this.state = {
+      isShowListUser: true,
+    };
+  }
+
+  componentDidMount() {
+    console.log(">> call component did mount");
+    setTimeout(() => {
+      document.title = "Home page";
+    }, 3000);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(">> call component did update");
+    if (this.props.listUsers !== prevProps.listUsers) {
+      if (this.props.listUsers.length === 5) {
+        alert("full user!");
+      }
+    }
+  }
 
   handleShowHide = () => {
     this.setState({
@@ -16,6 +40,7 @@ class DisplayInfo extends React.Component {
   render() {
     //props => Properties giao tiep giua cac component
 
+    console.log(">> call render");
     const { listUsers } = this.props;
 
     return (

@@ -95,3 +95,43 @@ component va html
 
 template + logic js = component
 
+
+=====================
+
+DOM, HTML DOM
+
+ban chat cua trang web la 1 document
+
+vitrual DOM: la dom react tao ra (vd: key trong MAP)
+moi lan thao tac voi data thi DOM ao se chay truoc va cap nhat DOM that
+
+
+======================
+
+Vong doi cua REACT
+
+
+- React Class (object) co Life Cycle. React  Hook (function) khong co Life Cycle
+
+
+- Mounting: 
+khi mo wwebsite se co cay DOM, data se do vao cay DOM
+
+1. constructor(): khoi tao state, cho phep component ke thua tu cha
+2. render(): dich code
+3. react cap nhat DOM that tu vitrial DOM
+4 componentDidMount(): component da mount xong
+
+
+- Update:
+cap nhat data, chay khi data thay doi
+
+1. New Props
+2. setState()
+3. forceUpdate()
+4. componentDidUpdate(): chay khi component da update xong, khi state, props được update
+
+- Unmounting:
+xoa component ra khoi cay DOM (chuyen trang)
+
+componentWasUnmount
