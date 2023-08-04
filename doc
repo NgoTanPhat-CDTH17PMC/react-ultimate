@@ -108,8 +108,9 @@ moi lan thao tac voi data thi DOM ao se chay truoc va cap nhat DOM that
 
 ======================
 
-Vong doi cua REACT
+Vong doi cua REACT 
 
+*áp dụng cho Function Component
 
 - React Class (object) co Life Cycle. React  Hook (function) khong co Life Cycle
 
@@ -146,3 +147,10 @@ NHƯNG React Hook ra đời cho phép dùng State ngay bên trong function Compo
 Khi nào dùng class compoennt
 - khi viết component có kiểm soát data (state)
 
+======================================
+
+useEffect (componentDidMount): tat ca nhung gi lam anh huong den ung dung thi se chay useEffect
+
+=====================================
+
+thay doi props + setState thi se render lai giao dien

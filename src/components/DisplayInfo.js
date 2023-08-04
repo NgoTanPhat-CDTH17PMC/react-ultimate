@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DisplayInfo.scss";
 import logo from "./../logo.svg";
 
@@ -87,9 +87,10 @@ import logo from "./../logo.svg";
 //   }
 // }
 
+// ban chat cua component hien tai dang la function (chay tu tren xuong duoi)
 const DisplayInfo = (props) => {
   // doi voi function component thì props tự động truyền vào. CÒn class component thì phải constructor để nhận props từ thằng component cha
-  const { listUsers } = props;
+  const { listUsers } = props; // object
 
   const [isShowHideListUser, setShowHideListUser] = useState(true);
   // cai o tren goi la destructuring assigment
@@ -100,6 +101,15 @@ const DisplayInfo = (props) => {
     setShowHideListUser(!isShowHideListUser);
   };
 
+  useEffect(
+    () => {
+      console.log(">> call me useeffect");
+      if (listUsers.length === 5) {
+        alert("letst");
+      }
+    },
+    [listUsers] // mang rỗng để cho useeffect chi chay 1 lan
+  );
   return (
     <div className="display-info-container">
       <div>
