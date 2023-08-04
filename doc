@@ -135,3 +135,14 @@ cap nhat data, chay khi data thay doi
 xoa component ra khoi cay DOM (chuyen trang)
 
 componentWasUnmount
+
+
+===================================
+Khi nào dùng function compoennt
+- Không dùng this + constructor
+- khi viết compoennt không có state thì dùng function component
+NHƯNG React Hook ra đời cho phép dùng State ngay bên trong function Component 
+
+Khi nào dùng class compoennt
+- khi viết component có kiểm soát data (state)
+
