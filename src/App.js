@@ -4,6 +4,7 @@ import "./App.scss";
 // import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
 // import MyComponent from "./components/MyComponent";
 import React from "react";
+import Header from "./components/Header/Header";
 
 class App extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class App extends React.Component {
       <div className="app-container">
         Hello World
         {/* <MyComponent></MyComponent> */}
+        <Header></Header>
       </div>
     );
   }

@@ -5,35 +5,37 @@ port: phan chia cac ung dung dang chay tren localhost
 =====================
 
 Toolchains:
-    Hot reloading: save code tự động load lại trang
-    Babel Compiler: giúp code được version của các loại js khác nhau
-    Webpack: giúp nén code lại, tối ưu code làm cho trình duyệt nhanh hơn.
-    Ready for production
+Hot reloading: save code tự động load lại trang
+Babel Compiler: giúp code được version của các loại js khác nhau
+Webpack: giúp nén code lại, tối ưu code làm cho trình duyệt nhanh hơn.
+Ready for production
 
 =====================
 
 git (https://prnt.sc/LOvWOH6PrpDy)
-    git init
-    git add .
-    git commit -m "noi dung"
-    git remote add origin https://github.com/NgoTanPhat-CDTH17PMC/react-ultimate.git
-    git push origin master 
+git init
+git add .
+git commit -m "noi dung"
+git remote add origin https://github.com/NgoTanPhat-CDTH17PMC/react-ultimate.git
+git push origin master
+
+    git branch : check xem dang co bao nhieu branch
+    git checkout -b prod: chuyen sang branch moi
 
 =====================
 
 How React WOrks?
-    React App la Single Page Application
-    browser chi chay 1 file: index.html
-    khi đổi trang thì react sẽ thay thế component của file html khác cho component của file index.html
+React App la Single Page Application
+browser chi chay 1 file: index.html
+khi đổi trang thì react sẽ thay thế component của file html khác cho component của file index.html
 
 1. dịch code - babel compiler
-require
-import const
+   require
+   import const
 
 2. tối ưu code, nén thành 1 vài file: css/js: webpack (lấy tất cả component bỏ vào id="root")
 
 create-react-app đã bao gồm webpack
-
 
 public chứa những file công khai
 
@@ -49,9 +51,9 @@ React component
 
 - tên file viết hoa MyComponent.js
 
-- JSX cho phep viet js trong html 
+- JSX cho phep viet js trong html
 
-- . và .. khác nhau thế nào? 
+- . và .. khác nhau thế nào?
 
 . ám chỉ những thư mục cùng cấp, lấy đc tại thư mục hiện tại
 .. ám chỉ đến thư mục cha
@@ -59,14 +61,13 @@ React component
 ====================
 
 Component State
-    Là js object
-    sync giữa state và giao diện
-    là cách react kiểm soát data của component
-    bản chất là 1 object của javascript nên phải dùng {}
+Là js object
+sync giữa state và giao diện
+là cách react kiểm soát data của component
+bản chất là 1 object của javascript nên phải dùng {}
 
 "this" la dai dien cho 1 object, class dang sử dụng
 để truy cập 1 thuộc tính của object
-
 
 ====================
 
@@ -90,11 +91,9 @@ this.function -> co nghia la tham chieu den function do vi chi can truyen data v
 
 =====================
 
-
 component va html
 
 template + logic js = component
-
 
 =====================
 
@@ -105,27 +104,24 @@ ban chat cua trang web la 1 document
 vitrual DOM: la dom react tao ra (vd: key trong MAP)
 moi lan thao tac voi data thi DOM ao se chay truoc va cap nhat DOM that
 
-
 ======================
 
-Vong doi cua REACT 
+Vong doi cua REACT
 
-*áp dụng cho Function Component
+\*áp dụng cho Function Component
 
-- React Class (object) co Life Cycle. React  Hook (function) khong co Life Cycle
+- React Class (object) co Life Cycle. React Hook (function) khong co Life Cycle
 
-
-- Mounting: 
-khi mo wwebsite se co cay DOM, data se do vao cay DOM
+- Mounting:
+  khi mo wwebsite se co cay DOM, data se do vao cay DOM
 
 1. constructor(): khoi tao state, cho phep component ke thua tu cha
 2. render(): dich code
 3. react cap nhat DOM that tu vitrial DOM
-4 componentDidMount(): component da mount xong
-
+   4 componentDidMount(): component da mount xong
 
 - Update:
-cap nhat data, chay khi data thay doi
+  cap nhat data, chay khi data thay doi
 
 1. New Props
 2. setState()
@@ -133,18 +129,19 @@ cap nhat data, chay khi data thay doi
 4. componentDidUpdate(): chay khi component da update xong, khi state, props được update
 
 - Unmounting:
-xoa component ra khoi cay DOM (chuyen trang)
+  xoa component ra khoi cay DOM (chuyen trang)
 
 componentWasUnmount
 
-
 ===================================
 Khi nào dùng function compoennt
+
 - Không dùng this + constructor
 - khi viết compoennt không có state thì dùng function component
-NHƯNG React Hook ra đời cho phép dùng State ngay bên trong function Component 
+  NHƯNG React Hook ra đời cho phép dùng State ngay bên trong function Component
 
 Khi nào dùng class compoennt
+
 - khi viết component có kiểm soát data (state)
 
 ======================================
@@ -155,7 +152,6 @@ useEffect (componentDidMount): tat ca nhung gi lam anh huong den ung dung thi se
 
 thay doi props + setState thi se render lai giao dien
 
-
 ====================================
 
 Tại sao phải sử dụng Hook
@@ -164,10 +160,9 @@ Tại sao phải sử dụng Hook
 
 khi nào dùng hook
 
-=> Dành cho react >= 16.8  (>2018)
+=> Dành cho react >= 16.8 (>2018)
 
-
-Hook là gì 
+Hook là gì
 
 là cái móc câu, móc vào component, khi nào cần thì nó sẽ gọi tới.
 dùng function component
