@@ -53,3 +53,12 @@ code {
     transform: rotate(360deg);
   }
 }
+
+
+.app-container {
+  .header-container {
+    .nav-link.active {
+      color: red;
+    }
+  }
+}
