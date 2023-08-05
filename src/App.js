@@ -5,6 +5,7 @@ import "./App.scss";
 // import MyComponent from "./components/MyComponent";
 import React from "react";
 import Header from "./components/Header/Header";
+import { Link } from "react-router-dom";
 
 class App extends React.Component {
   render() {
@@ -13,6 +14,11 @@ class App extends React.Component {
         Hello World
         {/* <MyComponent></MyComponent> */}
         <Header></Header>
+        <div>Test link</div>
+        <div>
+          <Link to="/user">Go to user page</Link>
+          <Link to="/admin">Go to admin page</Link>
+        </div>
       </div>
     );
   }
