@@ -22,6 +22,7 @@ import sidebarBg from "../../assets/bg2.jpg";
 import "react-pro-sidebar/dist/css/styles.css";
 
 import "./Sidebar.scss";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = (props) => {
   const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -60,6 +61,7 @@ const Sidebar = (props) => {
               //   suffix={<span className="badge red">New</span>}
             >
               Dashboard
+              <Link to="/admin"></Link>
             </MenuItem>
             {/* <MenuItem icon={<FaGem />}> Components</MenuItem> */}
           </Menu>
@@ -70,7 +72,10 @@ const Sidebar = (props) => {
               icon={<FaGem></FaGem>}
               title="Features"
             >
-              <MenuItem>QL Users</MenuItem>
+              <MenuItem>
+                QL Users
+                <Link to="/admin/manage-users"></Link>
+              </MenuItem>
               <MenuItem>QL Quiz</MenuItem>
               <MenuItem>QL Câu Hỏi</MenuItem>
             </SubMenu>
