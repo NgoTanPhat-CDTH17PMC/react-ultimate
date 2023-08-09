@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
@@ -31,26 +32,48 @@ const ModalCreateUser = (props) => {
     }
   };
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const handleSubmitCreateUser = async () => {
     //validate
 
-    // let data = {
-    //   email: email,
-    //   password: password,
-    //   username: username,
-    //   role: role,
-    //   userImage: image,
-    // };
+    const isValidEmail = validateEmail(email);
 
-    const data = new FormData();
-    data.append("email", email);
-    data.append("password", password);
-    data.append("username", username);
-    data.append("role", role);
-    data.append("userImage", image);
+    console.log(!isValidEmail);
+    if (!isValidEmail) {
+      toast.error("🦄 Invalid Email!");
+      return;
+    } else if (!password) {
+      toast.error("🦄 Password is required!");
+      return;
+    } else {
+      // submit data
+      const data = new FormData();
+      data.append("email", email);
+      data.append("password", password);
+      data.append("username", username);
+      data.append("role", role);
+      data.append("userImage", image);
 
-    let res = await axios.post("http://localhost:8081/apiv1/participant", data);
-    console.log(">> check : ", res);
+      let res = await axios.post(
+        "http://localhost:8081/apiv1/participant",
+        data
+      );
+      console.log(">> check : ", res);
+
+      if (res.data && res.data.EC == 0) {
+        toast.success(res.data.EM);
+        handleClose();
+      } else {
+        toast.error(res.data.EM);
+      }
+    }
   };
 
   return (
@@ -136,7 +159,11 @@ const ModalCreateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
+          <Button
+            className="has-custom"
+            variant="primary"
+            onClick={() => handleSubmitCreateUser()}
+          >
             Save Changes
           </Button>
         </Modal.Footer>

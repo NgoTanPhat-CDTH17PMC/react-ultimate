@@ -12,7 +12,7 @@ const ManageUser = (props) => {
       <div className="users-content">
         <div className="btn-add-new">
           <button
-            className="btn btn-primary"
+            className="btn has-custom btn-primary"
             onClick={() => setShowModalCreateUser(true)}
           >
             <FcPlus />

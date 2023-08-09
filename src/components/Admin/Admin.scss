@@ -1,6 +1,21 @@
+@keyframes dvWuPe {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
 .admin-container {
-    display: flex;
+    display       : flex;
     flex-direction: row;
+
     .admin-sidebar {
         .pro-sidebar {
             height: 100vh !important;
@@ -8,6 +23,8 @@
     }
 
     .admin-content {
+        width: 100%;
+
         .admin-header {
             height: 40px;
             border: 1px solid green;
