@@ -1,14 +1,23 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { deleteUser } from "../../../sevices/apiServices";
+import { toast } from "react-toastify";
 
 const ModalDeleteUser = (props) => {
   const { show, setShow, dataDelete } = props;
 
   const handleClose = () => setShow(false);
 
-  const handleSubmitDeleteUser = (email) => {
-    alert("delete");
+  const handleSubmitDeleteUser = async () => {
+    let data = await deteleUser(dataDelete.id);
+    if (data && data.EC == 0) {
+      toast.success(data.EM);
+      handleClose();
+      await fetchListUsers();
+    } else {
+      toast.error(data.EM);
+    }
   };
 
   return (
@@ -28,7 +37,7 @@ const ModalDeleteUser = (props) => {
           <Button
             className="btn btn-danger"
             variant="primary"
-            onClick={() => handleSubmitDeleteUser(dataDelete.email)}
+            onClick={() => handleSubmitDeleteUser()}
           >
             Confirm
           </Button>
