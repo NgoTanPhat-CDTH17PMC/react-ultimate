@@ -3,11 +3,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { toast } from "react-toastify";
-import { postCreateNewUser } from "../../../sevices/apiServices";
+import { putUpdateUser } from "../../../sevices/apiServices";
 import _ from "lodash";
 
 const ModalUpdateUser = (props) => {
-  const { show, setShow, dataUpdate } = props;
+  const { show, setShow, dataUpdate, fetchListUsers } = props;
   const handleClose = () => {
     setShow(false);
     setEmail("");
@@ -16,8 +16,8 @@ const ModalUpdateUser = (props) => {
     setRole("USER");
     setImage("");
     setPreviewImage("");
+    props.resetUpdateData();
   };
-  const handleShow = () => setShow(true);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,49 +47,20 @@ const ModalUpdateUser = (props) => {
     }
   };
 
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
-
   const handleSubmitCreateUser = async () => {
-    //validate
+    let data = await putUpdateUser(dataUpdate.id, username, role, image);
 
-    const isValidEmail = validateEmail(email);
-
-    if (!isValidEmail) {
-      toast.error("🦄 Invalid Email!");
-      return;
-    } else if (!password) {
-      toast.error("🦄 Password is required!");
-      return;
+    if (data && data.EC == 0) {
+      toast.success(data.EM);
+      handleClose();
+      await fetchListUsers();
     } else {
-      let data = await postCreateNewUser(
-        email,
-        password,
-        username,
-        role,
-        image
-      );
-
-      if (data && data.EC == 0) {
-        toast.success(data.EM);
-        handleClose();
-      } else {
-        toast.error(data.EM);
-      }
+      toast.error(data.EM);
     }
   };
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Add New User
-      </Button> */}
-
       <Modal
         size="xl"
         show={show}
