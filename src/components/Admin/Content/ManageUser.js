@@ -1,11 +1,41 @@
 import ModalCreateUser from "./ModalCreateUser";
 import "./ManageUser.scss";
 import { FcPlus } from "react-icons/fc";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TableUser from "./TableUser";
+import { getAllUsers } from "../../../sevices/apiServices";
+import { toast } from "react-toastify";
 
 const ManageUser = (props) => {
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
+  const [listUsers, setListUsers] = useState([
+    {
+      id: "123",
+      email: "123@gmail.com",
+      username: "123",
+      role: "USER",
+    },
+    {
+      id: "456",
+      email: "456@gmail.com",
+      username: "456",
+      role: "ADMIN",
+    },
+  ]);
+
+  //componentDidMount
+  useEffect(() => {
+    fetchListUsers();
+  }, []); // chay sau khi DOM rendered
+
+  const fetchListUsers = async () => {
+    // let res = await getAllUsers();
+    // if (res && res.EC === 0) {
+    //   setListUsers(res.DT);
+    // } else {
+    //   toast.error("Data not found!");
+    // }
+  };
 
   return (
     <div className="manage-user-container">
@@ -21,7 +51,7 @@ const ManageUser = (props) => {
           </button>
         </div>
         <div className="table-users-container">
-          <TableUser />
+          <TableUser listUsers={listUsers} />
         </div>
         <div>
           <ModalCreateUser
