@@ -3,12 +3,21 @@ import "./ManageUser.scss";
 import { FcPlus } from "react-icons/fc";
 import { useEffect, useState } from "react";
 import TableUser from "./TableUser";
-import { getAllUsers } from "../../../sevices/apiServices";
+import { toast } from "react-toastify";
+import {
+  getAllUsers,
+  getAllUsersWithPaginate,
+} from "../../../sevices/apiServices";
 import ModalUpdateUser from "./ModalUpdateUse";
 import ModalViewUser from "./ModalViewUser";
 import ModalDeleteUser from "./ModalDeleteUser";
+import TableUserPaginate from "./TableUserPaginate";
 
 const ManageUser = (props) => {
+  const LIMIT_USER = 5;
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
   const [showModalViewUser, setShowModalViewUser] = useState(false);
@@ -85,16 +94,27 @@ const ManageUser = (props) => {
 
   //componentDidMount
   useEffect(() => {
-    fetchListUsers();
+    // fetchListUsers();
+    fetchListUsersWithPaginate(1); // chỉ cần lấy trang đầu  tiên
   }, []); // chay sau khi DOM rendered
 
   const fetchListUsers = async () => {
-    // let res = await getAllUsers();
-    // if (res && res.EC === 0) {
-    //   setListUsers(res.DT);
-    // } else {
-    //   toast.error("Data not found!");
-    // }
+    let res = await getAllUsers();
+    if (res && res.EC == 0) {
+      setListUsers(res.DT);
+    } else {
+      toast.error("Data not found!");
+    }
+  };
+
+  const fetchListUsersWithPaginate = async (page) => {
+    let res = await getAllUsersWithPaginate(page, LIMIT_USER);
+    if (res && res.EC == 0) {
+      setListUsers(res.DT.users);
+      setPageCount(res.DT.totalPages);
+    } else {
+      toast.error("Data not found!");
+    }
   };
 
   const handleClickBtnUpdate = (user) => {
@@ -116,6 +136,13 @@ const ManageUser = (props) => {
     setDataDelete(user);
   };
 
+  const fetchListUsersWithPaginateNoAPI = (currentListUser) => {
+    if (currentListUser && currentListUser.length > 0) {
+      const selectedUsers = currentListUser.map((item) => listUsers[item]);
+      setListUsers(selectedUsers);
+    }
+  };
+
   return (
     <div className="manage-user-container">
       <div className="title">Manage User</div>
@@ -130,11 +157,23 @@ const ManageUser = (props) => {
           </button>
         </div>
         <div className="table-users-container">
-          <TableUser
+          {/* <TableUser
             listUsers={listUsers}
             handleClickBtnUpdate={handleClickBtnUpdate}
             handleClickBtnView={handleClickBtnView}
             handleClickBtnDelete={handleClickBtnDelete}
+          /> */}
+
+          <TableUserPaginate
+            listUsers={listUsers}
+            handleClickBtnUpdate={handleClickBtnUpdate}
+            handleClickBtnView={handleClickBtnView}
+            handleClickBtnDelete={handleClickBtnDelete}
+            fetchListUsersWithPaginate={getAllUsersWithPaginate}
+            fetchListUsersWithPaginateNoAPI={fetchListUsersWithPaginateNoAPI}
+            pageCount={pageCount}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
         <div>
@@ -142,6 +181,9 @@ const ManageUser = (props) => {
             show={showModalCreateUser}
             setShow={setShowModalCreateUser}
             fetchListUsers={fetchListUsers}
+            fetchListUsersWithPaginate={getAllUsersWithPaginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
 
           <ModalUpdateUser
@@ -150,6 +192,9 @@ const ManageUser = (props) => {
             dataUpdate={dataUpdate}
             fetchListUsers={fetchListUsers}
             resetUpdateData={resetUpdateData}
+            fetchListUsersWithPaginate={getAllUsersWithPaginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
 
           <ModalViewUser
@@ -164,6 +209,9 @@ const ManageUser = (props) => {
             setShow={setShowModalDeleteUser}
             fetchListUsers={fetchListUsers}
             dataDelete={dataDelete}
+            fetchListUsersWithPaginate={getAllUsersWithPaginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
       </div>

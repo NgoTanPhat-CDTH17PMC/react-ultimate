@@ -5,16 +5,25 @@ import { deleteUser } from "../../../sevices/apiServices";
 import { toast } from "react-toastify";
 
 const ModalDeleteUser = (props) => {
-  const { show, setShow, dataDelete } = props;
+  const {
+    show,
+    setShow,
+    dataDelete,
+    fetchListUsers,
+    fetchListUsersWithPaginate,
+    setCurrentPage,
+  } = props;
 
   const handleClose = () => setShow(false);
 
   const handleSubmitDeleteUser = async () => {
-    let data = await deteleUser(dataDelete.id);
+    let data = await deleteUser(dataDelete.id);
     if (data && data.EC == 0) {
       toast.success(data.EM);
       handleClose();
-      await fetchListUsers();
+      // await fetchListUsers();
+      setCurrentPage(1);
+      await fetchListUsersWithPaginate(1);
     } else {
       toast.error(data.EM);
     }
