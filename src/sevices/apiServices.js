@@ -1,5 +1,5 @@
 import axios from "axios";
-import instance from "../utils/axiosCustomize";
+// import instance from "../utils/axiosCustomize";
 
 const postCreateNewUser = (email, password, username, role, image) => {
   // submit data
@@ -44,10 +44,18 @@ const deleteUser = (userId) => {
   return axios.delete("api/v1/participant", { data: { id: userId } });
 };
 
+const postLogin = (userEmail, userPassword) => {
+  return axios.post(`/api/v1/login`, {
+    email: userEmail,
+    password: userPassword,
+  });
+};
+
 export {
   postCreateNewUser,
   getAllUsers,
   putUpdateUser,
   deleteUser,
   getAllUsersWithPaginate,
+  postLogin,
 };

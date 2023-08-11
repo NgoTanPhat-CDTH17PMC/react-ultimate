@@ -54,7 +54,7 @@ const TableUser = (props) => {
               );
             })}
 
-          {listUsers && listUsers.length == 0 && (
+          {listUsers && listUsers.length === 0 && (
             <tr>
               <td colSpan="4">Emply Data</td>
             </tr>

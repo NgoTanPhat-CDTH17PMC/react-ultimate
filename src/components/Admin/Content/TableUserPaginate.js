@@ -1,5 +1,4 @@
 import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
-import { useEffect, useState } from "react";
 
 const TableUserPaginate = (props) => {
   const {
@@ -9,6 +8,7 @@ const TableUserPaginate = (props) => {
     handleClickBtnDelete,
     fetchListUsersWithPaginate,
     pageCount,
+    setCurrentPage,
     // fetchListUsersWithPaginateNoAPI
   } = props;
 
@@ -34,8 +34,8 @@ const TableUserPaginate = (props) => {
     // setItemOffset(newOffset);
 
     console.log(`User requested page number ${event.selected + 1}`);
-    props.fetchListUsersWithPaginate(+event.selected + 1);
-    props.setCurrentPage(+event.selected + 1);
+    fetchListUsersWithPaginate(+event.selected + 1);
+    setCurrentPage(+event.selected + 1);
   };
 
   return (
@@ -86,7 +86,7 @@ const TableUserPaginate = (props) => {
               );
             })}
 
-          {listUsers && listUsers.length == 0 && (
+          {listUsers && listUsers.length === 0 && (
             <tr>
               <td colSpan="4">Emply Data</td>
             </tr>

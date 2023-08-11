@@ -62,7 +62,7 @@ const ModalCreateUser = (props) => {
       );
       console.log(">> check : ", data);
 
-      if (data && data.EC == 0) {
+      if (data && data.EC === 0) {
         toast.success(data.EM);
         handleClose();
         props.setCurrentPage(1);

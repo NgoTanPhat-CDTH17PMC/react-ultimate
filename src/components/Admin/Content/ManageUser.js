@@ -100,7 +100,7 @@ const ManageUser = (props) => {
 
   const fetchListUsers = async () => {
     let res = await getAllUsers();
-    if (res && res.EC == 0) {
+    if (res && res.EC === 0) {
       setListUsers(res.DT);
     } else {
       toast.error("Data not found!");
@@ -109,7 +109,7 @@ const ManageUser = (props) => {
 
   const fetchListUsersWithPaginate = async (page) => {
     let res = await getAllUsersWithPaginate(page, LIMIT_USER);
-    if (res && res.EC == 0) {
+    if (res && res.EC === 0) {
       setListUsers(res.DT.users);
       setPageCount(res.DT.totalPages);
     } else {

@@ -7,7 +7,12 @@ import { putUpdateUser } from "../../../sevices/apiServices";
 import _ from "lodash";
 
 const ModalUpdateUser = (props) => {
-  const { show, setShow, dataUpdate, fetchListUsers } = props;
+  const {
+    show,
+    setShow,
+    dataUpdate,
+    // fetchListUsers
+  } = props;
   const handleClose = () => {
     setShow(false);
     setEmail("");
@@ -50,7 +55,7 @@ const ModalUpdateUser = (props) => {
   const handleSubmitCreateUser = async () => {
     let data = await putUpdateUser(dataUpdate.id, username, role, image);
 
-    if (data && data.EC == 0) {
+    if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
       // props.setCurrentPage(1);
