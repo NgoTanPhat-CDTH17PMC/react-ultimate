@@ -177,3 +177,29 @@ cung cấp 1 công cụ, khi nào cần data sẽ gọi redux ra
 không cần phải có quan hệ cha con
 
 ActionsDispatch
+
+Redux Action
+
+là 1 object js => state/props
+
+key:
+-type: là ID để redux biết phải hành động gì (unique)
+-payload: data muốn truyền vào cho redux xử lý
+
+Dispatch:
+-event handler: người xử lý sự kiện
+-Để thực thi 1 action thì cần sử dụng dispatch
+dispatch(actions)
+
+Reducers:
+
+- Dùng để xác định khi 1 action được thực thi thì sẽ cần phải làm gì tiếp theo
+- Đầu vào là 1 action
+- Đầu ra là 1 state (cập nhật state sau khi xử lý logic)
+
+useSelector:
+
+- Lấy state của Redux
+
+//stateRedux => call Reducer => state's reducer
+Slice
