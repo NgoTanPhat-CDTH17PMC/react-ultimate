@@ -1,3 +1,13 @@
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
 .login-container {
     .header {
         height         : 45px;
@@ -52,6 +62,18 @@
             justify-content: center;
             color          : #fff;
             font-weight    : bold;
+
+            svg {
+                margin-right: 7px;
+                margin-top  : -3px;
+                animation   : spin 1s infinite linear;
+            }
+
+            &:disabled {
+                background: #dddddd;
+                color     : #afafaf;
+                cursor    : no-drop;
+            }
         }
 
         .back {
