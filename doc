@@ -203,3 +203,11 @@ useSelector:
 
 //stateRedux => call Reducer => state's reducer
 Slice
+
+==================================
+
+persist:
+Luu tat ca thong tin cua user thong qua key vao Local Storage
+
+persistGate
+Ung dung chi chay khi data cuar redux duoc nap thanh cong (tranh bug khi bi lag)
