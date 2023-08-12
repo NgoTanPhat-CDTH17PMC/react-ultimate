@@ -1,5 +1,6 @@
 import axios from "axios";
 import NProgress from "nprogress";
+import { store } from "../redux/store";
 
 NProgress.configure({
   showSponner: false,
@@ -15,6 +16,9 @@ const instance = axios.create({
 // Add a request interceptor
 instance.interceptors.request.use(
   function (config) {
+    // moi lan request se add token vao
+    const access_token = store?.getState()?.user?.account?.access_token;
+    config.headers["Authorization"] = "Bearer" + access_token; // dinh kem token vao
     NProgress.start();
     // Do something before request is sent
     return config;

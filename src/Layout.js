@@ -6,6 +6,7 @@ import ManageUser from "./components/Admin/Content/ManageUser";
 import DashBoard from "./components/Admin/Content/DashBoard";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import ListQuiz from "./components/User/ListQuiz";
 import App from "./App";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,7 +17,7 @@ const Layout = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />}></Route>
-          <Route path="/user" element={<User />}></Route>
+          <Route path="user" element={<ListQuiz />}></Route>
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route index element={<DashBoard />}></Route>

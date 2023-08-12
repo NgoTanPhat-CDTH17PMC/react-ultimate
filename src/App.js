@@ -17,7 +17,7 @@ class App extends React.Component {
 
         <div className="main-container">
           <div className="sidenav-container"></div>
-          <div className="app-content">
+          <div className="app-content container">
             <Outlet />
           </div>
         </div>

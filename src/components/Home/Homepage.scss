@@ -1,0 +1,24 @@
+.hompage-container {
+    .homepage-image {
+        display: block;
+    }
+
+    .title-1 {
+        font-size     : 80px;
+        letter-spacing: -0.02em;
+        line-height   : 100%;
+    }
+
+    .title-2 {
+        margin-top    : 24px;
+        font-size     : 24px;
+        letter-spacing: normal;
+        line-height   : 133%;
+    }
+
+    .title-3 {
+        button {
+            margin-top: 24px;
+        }
+    }
+}

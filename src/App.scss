@@ -53,7 +53,6 @@ code {
   }
 }
 
-
 .app-container {
   .header-container {
     .nav-link.active {
@@ -122,4 +121,8 @@ button.has-custom {
   &:hover:after {
     background: transparent;
   }
+}
+
+.app-container {
+  .app-content {}
 }

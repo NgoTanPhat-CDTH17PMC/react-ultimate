@@ -43,7 +43,7 @@ const Header = () => {
             </NavLink>
           </Nav>
           <Nav>
-            {isAuthenticated === false ? (
+            {isAuthenticated && isAuthenticated === false ? (
               <>
                 <button className="btn-login" onClick={() => handleLogin()}>
                   Login
