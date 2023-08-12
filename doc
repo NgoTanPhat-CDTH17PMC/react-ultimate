@@ -166,3 +166,14 @@ Hook là gì
 
 là cái móc câu, móc vào component, khi nào cần thì nó sẽ gọi tới.
 dùng function component
+
+=======================================
+
+Redux:
+chạy song song với ứng dụng nên khi update data thì ứng dụng cũng sẽ update theo
+dùng để lưu trữ data
+
+cung cấp 1 công cụ, khi nào cần data sẽ gọi redux ra
+không cần phải có quan hệ cha con
+
+ActionsDispatch
