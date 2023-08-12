@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.scss";
-import { postLogin } from "../../sevices/apiServices";
+import "./Register.scss";
+import { postRegister } from "../../sevices/apiServices";
 import { toast } from "react-toastify";
-const Login = (props) => {
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
+
+const Register = (props) => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [isShowPassword, setIsShowPassword] = useState(false);
 
   const validateEmail = (email) => {
     return String(email)
@@ -16,7 +19,9 @@ const Login = (props) => {
       );
   };
 
-  const handleLogin = async () => {
+  const navigate = useNavigate();
+
+  const handleRegister = async () => {
     // validate
     const isValidateEmail = validateEmail(email);
     if (!isValidateEmail) {
@@ -29,10 +34,10 @@ const Login = (props) => {
       return;
     }
     // submit
-    let res = await postLogin(email, password);
+    let res = await postRegister(username, email, password);
     if (res && +res.EC === 0) {
       toast.success(res.EM);
-      navigate("/");
+      navigate("/login");
     } else {
       toast.error(res.EM);
     }
@@ -40,21 +45,32 @@ const Login = (props) => {
   const handleGoBack = () => {
     navigate("/");
   };
-
-  const handleRegister = () => {
-    navigate("/register");
+  const handleLogin = () => {
+    navigate("/login");
   };
+
   return (
-    <div className="login-container">
+    <div className="register-container">
       <div className="header col-12 mx-auto">
-        <span>Don't have an account yet?</span>
-        <button onClick={() => handleRegister()}>Sign up</button>
+        <span>Have an account?</span>
+        <button onClick={() => handleLogin()}>Login</button>
       </div>
       <div className="title col-5 mx-auto">HoiDanIt</div>
-      <div className="welcome col-5 mx-auto">Hello, who's this?</div>
+      <div className="welcome col-5 mx-auto">
+        Get better data with conversational forms, surveys, quizzes & more.
+      </div>
       <div className="content-form col-5 mx-auto">
         <div className="form-group">
-          <label>Email</label>
+          <label>Username</label>
+          <input
+            type={"text"}
+            className="form-control"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Email (*)</label>
           <input
             type={"email"}
             className="form-control"
@@ -62,22 +78,34 @@ const Login = (props) => {
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label>Password</label>
+        <div className="form-group pass-group">
+          <label>Password (*)</label>
           <input
-            type={"password"}
+            type={isShowPassword ? "text" : "password"}
             className="form-control"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
+
+          {isShowPassword ? (
+            <span
+              className="icons-eye"
+              onClick={() => setIsShowPassword(false)}
+            >
+              <VscEyeClosed />
+            </span>
+          ) : (
+            <span className="icons-eye" onClick={() => setIsShowPassword(true)}>
+              <VscEye />
+            </span>
+          )}
         </div>
-        <span className="forgot-password">Forgot password?</span>
         <div>
           <button
             className="btn-submit btn btn-primary has-custom"
-            onClick={() => handleLogin()}
+            onClick={() => handleRegister()}
           >
-            Login in
+            Create my free account
           </button>
         </div>
         <div className="back">
@@ -95,4 +123,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Register;
