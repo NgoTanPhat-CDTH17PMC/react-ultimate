@@ -4,7 +4,7 @@ import { getDataQuiz } from "../../sevices/apiServices";
 
 const DetailQuiz = (props) => {
   const param = useParams();
-  const quizId = params.id;
+  const quizId = param.id;
 
   useEffect(() => {
     fetchQuestion();

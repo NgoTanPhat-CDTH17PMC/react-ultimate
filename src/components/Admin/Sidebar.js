@@ -73,6 +73,9 @@ const Sidebar = (props) => {
               </MenuItem>
               <MenuItem>QL Quiz</MenuItem>
               <MenuItem>QL Câu Hỏi</MenuItem>
+              <MenuItem>
+                QL Card Tarot <Link to="/admin/manage-cards"></Link>
+              </MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>

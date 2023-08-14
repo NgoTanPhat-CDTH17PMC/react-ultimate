@@ -1,0 +1,30 @@
+{
+  "Description": "",
+  "Badge": [
+    "4 Nguyên Tố",
+    "Lá Ẩn Phụ (Minor Arcana)",
+    "Tarot Và Kiến Thức Bổ Sung"
+  ],
+  "Arcana": [
+    {
+      "Wands": "Bộ Wands là bộ của sự sáng tạo, hành động và thay đổi. Chúng kết hợp với những phẩm chất như nhiệt tình, thích phiêu lưu, đương đầu với rủi ro và tự tin. Bộ này tương đồng với Hệ Dương, hoặc tính nam, trong triết học Trung Hoa và được kết hợp với nguyên tố Lửa. Một ngọn lửa đang cháy là biểu tượng hoàn hảo của năng lượng bộ Wands. Nguồn năng lượng này tuôn chảy ra bên ngoài và tạo nên động lực cuồng nhiệt.",
+      "Cups": "Bộ Cups là bộ của những cảm xúc và trải nghiệm tinh thần. Chúng mô tả những trạng thái sâu hơn bên trong, những cảm giác và hình mẫu mối quan hệ. Năng lượng của bộ này chảy vào bên trong. Bộ Cups tương đồng với Hệ Âm, hoặc tính nữ, trong triết học Trung Hoa và được kết hợp với nguyên tố Nước. Khả năng của nước là chảy và lấp đầy những khoảng trống, để duy trì và phản chiếu những cảm xúc hay thay đổi khiến nó thành biểu tượng lý tưởng của bộ Cups.",
+      "Swords": "Bộ Swords là bộ của trí tuệ, suy nghĩ và lý trí. Chúng liên quan với công lý, sự thật và những nguyên tắc đạo đức. Bộ Swords được kết hợp với nguyên tố Khí. Một đầu trời quang đãng, rộng mở và tràn đầy ánh sáng, là một biểu tượng của tinh thần minh mẫn – biểu tượng lý tưởng của bộ Swords. Bộ này cũng kết hợp với những trạng thái dẫn đến mất cân bằng và bất hạnh. Trí tuệ chúng ta là một tài sản vô giá, nhưng cũng là một tác nhân của bản ngã, nó có thể dẫn chúng ta đi chệch nếu chúng ta không thấm nhuần những minh triết của “người cố vấn bên trong mình”.",
+      "Pentacles": "Bộ Pentacles là bộ về tính thực tiễn, đảm bảo và những vấn đề vật chất. Chúng kết hợp với nguyên tố Đất và những yêu cầu rõ ràng về việc hoạt động với vật chất. Trong bộ Pentacles, chúng ta tôn vinh vẻ đẹp của tự nhiên, những mối quan hệ với thực vật và động vật và những trải nghiệm sinh lý trong cơ thể. Bộ Pentacles cũng đại diện cho sự thịnh vượng và dồi dào của tất cả dạng vật chất. Đôi khi bộ này được gọi là Coins, một biểu tượng rõ ràng của trao đổi hàng hóa và dịch vụ trong thế giới vật chất.\nMỗi bộ trong bộ ẩn phụ đều có phẩm chất riêng biệt. Những trải nghiệm mỗi ngày của chúng ta là sự hòa trộn của cả 4 phẩm chất này. Những giải bài của bạn sẽ cho bạn thấy cách thức những nguồn năng lượng khác nhau tác động lên cuộc sống bạn ở một thời điểm cụ thể.\nBốn bộ đều có cấu trúc rất giống với những lá bài tây mà chúng ta chơi hàng ngày với 10 lá bài đánh số (từ Ace đến Ten) và bốn lá court cards (King, Queen, Knight và Page). Mỗi lá bài đóng một vai trò trong việc thể hiện cách thức năng lượng của nó bộc lộ trong thế giới.",
+      "Ace": "Lá Ace nói lên chủ đề của bộ chứa nó. Ace of Cups đại diện cho tình yêu, cảm xúc, trực giác và thân tình – những khái niệm sẽ được khám phá trong những lá bài khác của bộ Cups. Một lá Ace luôn thể hiện năng lượng tích cực. Nó là tiêu chuẩn cho những điều tốt nhất mà bộ của nó có được.",
+      "2_9": "Mỗi lá bài đánh số ở giữa thể hiện một khía cạnh khác nhau của bộ đó. Bộ Wands khám phá những chủ đề như sức mạnh cá nhân (Lá số 2), khả năng lãnh đạo (Lá số 3), sự phấn khích (Lá số 4), và tính cạnh tranh (Lá số 5). Một lá bài có thể tiếp cận một ý tưởng từ nhiều góc độ khác nhau. Lá 5 of Pentacles thể hiện nhiều mặt của sự ham muốn – những thời điểm khó khăn (ham muốn vật chất), sức khỏe kém (ham muốn thể lực), và sự hắt hủi (ham muốn cảm xúc).",
+      "10": "Lá 10 hàm ý những chủ đều được dẫn bởi một lá Ace đến phần cuối theo tính logic của chúng. Nếu bạn đưa tình yêu, sự gần gũi và cảm xúc của Ace of Cups đến nấc cuối cùng của chúng, bạn sẽ có niềm vui, thanh thản và tình yêu gia đình của 10 of Cups.",
+      "Court_Cards": "Những lá bài court chỉ con người với những tính cách vốn phản ánh lên phẩm chất của bộ ẩn và phân cấp của chúng. Các lá court cho chúng ta thấy những cách tồn tại nhất định trên thế giới để chúng ta có thể sử dụng (hoặc tránh) những lối đó khi thích hợp.\n-Lá King là sự trưởng thành và tính nam. Ông ta là một người hành động vốn tập trung vào những sự kiện hướng ra ngoài cuộc sống. Ông ta thể hiện quyền lực, kiểm soát và làm chủ những lĩnh vực liên quan đến bộ ẩn của ông ta. Phong stý của King là mạnh mẽ, nổi bật và thẳng thắn. Ông ta có liên quan đến những kết quả và những vấn đề thực tế, mang tính hướng dẫn.\n-Lá Queen là sự trưởng thành và tính nữ. Bà ta là hiện thân của những thẩm chất mà bộ của bà ta có, thay vì bộc lộ chúng ra. Sự tập trung của bà ta là hướng nội, và phong stý của bà ta là thư giãn và để cho tự nhiên. Một Queen ít có liên quan đến những kết quả, thay vào đó là sự hưởng thụ việc tồn tại trên thế giới. Bà ta kết hợp với cảm giác, mối quan hệ và tự thể hiện bản thân.\n-Lá Knight là tuổi trẻ chưa chín chắn. Anh ta chưa thể biểu hiện bản thân mình một cách cân bằng. Anh ta bay bổng một cách hoang dại từ thái cực này đến thái cực khác vì anh đã đang cố gắng liên kết với thế giới của mình. Knight có xu hướng thái quá, nhưng anh ta cũng nhiệt tình và chân thành, và những thẩm chất này bù đắp cho anh ta trong mắt chúng ta. Chúng ta mến mộ tinh thần và nguồn năng lượng của anh ta.\n-Lá Page là một đứa trẻ nghịch ngợm. Hắn ta bộc lộ thẩm chất của bộ ẩn với niệm vui thích và phóng túng. Việc tiếp cận của hắn ta chưa sâu sắc lắm, nhưng thoải mái, lỏng lẻo và tự phát. Hắn ta là một biểu tượng của sự phiêu lưu và tiềm năng.\nGiờ đây bạn đã có những khái niệm cơ bản về vai trò của mỗi lá bài trong bộ bài tarot của mình. Bạn sẽ có một cảm giác là sao tất cả chúng phù hợp với nhau và mỗi lá đóng góp cho toàn thể điều gì. Trong những bài viết tiếp theo, bạn sẽ được học nhiều hơn về những lá bài này và cách thức để giải nghĩa chúng trong giải bài của bạn."
+    }
+  ],
+  "Tags": [
+    "Bộ cups",
+    "Bộ Swords",
+    "Bộ Wands",
+    "lá court cards",
+    "lá king",
+    "lá knight",
+    "lá page",
+    "lá queen"
+  ]
+}

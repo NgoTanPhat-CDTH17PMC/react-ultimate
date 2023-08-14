@@ -1,0 +1,83 @@
+.modal-card-list {
+    .modal-90w {
+        max-width: none !important;
+        width    : 90%;
+    }
+
+    .card-image {
+        position: -webkit-sticky;
+        position: sticky;
+        top     : 0;
+        height  : 100%;
+    }
+
+    .modal-body {
+        height  : 75vh;
+        overflow: auto;
+    }
+
+    .tarot-card {
+        .p-title {
+            font-weight: bold;
+        }
+
+        .p-content {}
+    }
+
+    .p-line {
+
+        &[data-key="number"] {
+            .p-content {
+                font-family: 'Quattrocento', serif;
+            }
+        }
+
+        .p-title {
+            font-size: 1rem;
+        }
+
+        .p-content {
+            color: #585858;
+        }
+    }
+
+    .nested-values {
+        &[data-object="true"] {
+            .p-title {
+                font-size      : 1rem;
+                text-decoration: underline;
+
+                .p-title {
+                    text-decoration: none;
+                    ;
+                }
+            }
+        }
+
+        .nested-line {
+
+            [data-key^="0"],
+            [data-key^="1"],
+            [data-key^="2"],
+            [data-key^="3"],
+            [data-key^="4"],
+            [data-key^="5"],
+            [data-key^="6"],
+            [data-key^="7"],
+            [data-key^="8"],
+            [data-key^="9"] {
+                .p-title {
+                    position: relative;
+                    color   : transparent;
+
+                    &::before {
+                        content : "✦";
+                        color   : #000;
+                        position: absolute;
+                        right   : 0;
+                    }
+                }
+            }
+        }
+    }
+}
