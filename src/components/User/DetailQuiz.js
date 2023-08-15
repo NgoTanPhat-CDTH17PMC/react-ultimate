@@ -64,10 +64,10 @@ const DetailQuiz = (props) => {
   };
 
   const handleCheckbox = (answerId, questionId) => {
-    let dataQuizClone = _.cloneDeep(dataQuiz);
+    let dataQuizClone = _.cloneDeep(dataQuiz); // vi dataQuiz khong cap nhat truc tiep duoc nne la phai clone
     let question = dataQuizClone.find(
       (item) => +item.questionId === +questionId
-    );
+    ); // tim cau hoi vua chon tu Question
     if (question && question.answers) {
       let b = question.answers.map((item) => {
         // tim cau hoi
@@ -86,6 +86,35 @@ const DetailQuiz = (props) => {
       dataQuizClone[index] = question; // question da duoc cap nhat o tren ne duoc gan vao data
       setDataQuiz(dataQuizClone); // update lai ket qua cho cau hoi
     }
+  };
+
+  const handleFinishQuiz = () => {
+    //xu ly data de upload ket qua llen api
+    let payload = {
+      quizId: +quizId,
+      answer: [],
+    };
+    let answers = [];
+    if (payload && dataQuiz.length > 0) {
+      dataQuiz.forEach((question) => {
+        let questionId = item.questionId;
+        let userAnswerId = [];
+
+        question.answer.forEach((a) => {
+          // doi voi moi answer thi se chon nhung thang isSelected = true
+          if (a.isSelected === true) {
+            userAnswerId.push(a.id);
+          }
+        });
+
+        answers.push({
+          questionId: questionId,
+          userAnswerId: userAnswerId,
+        });
+      });
+    }
+
+    payload.answer = answers;
   };
   return (
     <div className="detail-quiz-container">

@@ -51,3 +51,10 @@ const Question = (props) => {
 };
 
 export default Question;
+
+/*
+
+sau khi chon dap an thi Question se chuyen answerId va questionId len DetailQuiz
+
+DetailQuiz se tim dung Question do va cap nhat lai cau tra loi
+*/
