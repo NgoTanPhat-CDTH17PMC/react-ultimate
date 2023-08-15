@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { getDataQuiz } from "../../sevices/apiServices";
+import { getDataQuiz, postSubmitQuiz } from "../../sevices/apiServices";
 import _ from "lodash";
 import "./DetailQuiz.scss";
 import Question from "./Question";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import ModalResult from "../Admin/Content/ModalResult";
 
 const DetailQuiz = (props) => {
   const param = useParams();
@@ -13,6 +15,9 @@ const DetailQuiz = (props) => {
 
   const [dataQuiz, setDataQuiz] = useState([]);
   const [index, setIndex] = useState(0); // check xem dang o cau hoi so index
+  const [dataModalResult, setDataModalResult] = useState(false);
+
+  const [isShowModalResult, setIsShowModalResult] = useState(false);
 
   useEffect(() => {
     fetchQuestion();
@@ -88,7 +93,7 @@ const DetailQuiz = (props) => {
     }
   };
 
-  const handleFinishQuiz = () => {
+  const handleFinish = async () => {
     //xu ly data de upload ket qua llen api
     let payload = {
       quizId: +quizId,
@@ -115,6 +120,45 @@ const DetailQuiz = (props) => {
     }
 
     payload.answer = answers;
+
+    // submit api
+
+    let res = await postSubmitQuiz(payload);
+    if (res && res.EC === 0) {
+      setDataModalResult({
+        countCorrect: res.DT.countCorrect,
+        countTotal: res.DT.countTotal,
+        quizData: res.DT.quizData,
+      });
+      setIsShowModalResult(true);
+    } else {
+      toast.error("some thing wrongs...");
+    }
+    /*
+    {
+      DT: {
+        countCorrect: 0
+        countTotal: 3
+        quizData: [ // dung de hien thi dap an
+          {
+            isCorrect: true,
+            questionId: 1, // cau hoi thu 1
+            systemAnswers: [{
+              id: 3,
+              description: 'Noi dung cua cau hoi?',
+              correct_answer: true
+            }] // dap an cua he thong
+            userAnswers: [1,2,3] // nguoi dung tra loi
+          },
+          {},
+          {}
+        ]
+        EC: 0;
+        EM: "Submit the quiz successed"
+      }
+
+    }
+    */
   };
   return (
     <div className="detail-quiz-container">
@@ -145,6 +189,12 @@ const DetailQuiz = (props) => {
         </div>
       </div>
       <div className="right-content">count down</div>
+
+      <ModalResult
+        show={isShowModalResult}
+        setShow={setIsShowMModalResult}
+        dataModalResult={dataModalResult}
+      />
     </div>
   );
 };
