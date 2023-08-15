@@ -8,6 +8,17 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import ModalResult from "../Admin/Content/ModalResult";
 
+/*
+"DT": {
+  "id": ,
+  "name":"Bai test ky nang doc",
+  "description": "Khong doc cung lam duoc",
+  "image": ""
+},
+"EC": 0,
+"EM": "Get quizzes data succeed"
+*/
+
 const DetailQuiz = (props) => {
   const param = useParams();
   const quizId = param.id;
@@ -102,7 +113,7 @@ const DetailQuiz = (props) => {
     let answers = [];
     if (payload && dataQuiz.length > 0) {
       dataQuiz.forEach((question) => {
-        let questionId = item.questionId;
+        let questionId = question.questionId;
         let userAnswerId = [];
 
         question.answer.forEach((a) => {
@@ -192,7 +203,7 @@ const DetailQuiz = (props) => {
 
       <ModalResult
         show={isShowModalResult}
-        setShow={setIsShowMModalResult}
+        setShow={setIsShowModalResult}
         dataModalResult={dataModalResult}
       />
     </div>
