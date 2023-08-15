@@ -74,7 +74,7 @@ const ModalResult = (props) => {
           <Modal.Title>Delete User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>Total Question: {dataModalResult.countTotal} </div>/div>
+          <div>Total Question: {dataModalResult.countTotal} </div>
           <div>Total Correct: {dataModalResult.countCorrect}</div>
         </Modal.Body>
         <Modal.Footer>

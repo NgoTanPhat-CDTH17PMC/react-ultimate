@@ -12,7 +12,7 @@ import { DiReact } from "react-icons/di";
 import sidebarBg from "../../assets/bg2.jpg";
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Sidebar.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = (props) => {
   const {
@@ -21,6 +21,8 @@ const Sidebar = (props) => {
     toggled,
     handleToggleSidebar,
   } = props;
+
+  const navigate = useNavigate();
   return (
     <>
       <ProSidebar
@@ -45,7 +47,7 @@ const Sidebar = (props) => {
             }}
           >
             <DiReact size={"3em"} color={"00bfff"}></DiReact>
-            <span>Hoi Dan IT</span>
+            <span onClick={() => navigate("/")}>Hoi Dan IT</span>
           </div>
         </SidebarHeader>
 
@@ -71,7 +73,10 @@ const Sidebar = (props) => {
                 QL Users
                 <Link to="/admin/manage-users"></Link>
               </MenuItem>
-              <MenuItem>QL Quiz</MenuItem>
+              <MenuItem>
+                QL Quiz
+                <Link to="/admin/manage-quizzes"></Link>
+              </MenuItem>
               <MenuItem>QL Câu Hỏi</MenuItem>
               <MenuItem>
                 QL Card Tarot <Link to="/admin/manage-cards"></Link>
