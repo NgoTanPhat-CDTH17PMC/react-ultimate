@@ -340,7 +340,7 @@ const Question = (props) => {
     setQuestions(initQuestions);
   };
   return (
-    <div className="question-container containenr">
+    <div className="question-container container">
       <div className="title">Manage Question</div>
       <div className="add-new-question">
         <div className="col-6 form-group">

@@ -62,6 +62,10 @@ code {
       color: red;
     }
   }
+
+  .app-content {
+    height: calc(100vh - 60px)
+  }
 }
 
 button.has-custom {
@@ -124,8 +128,4 @@ button.has-custom {
   &:hover:after {
     background: transparent;
   }
-}
-
-.app-container {
-  .app-content {}
 }

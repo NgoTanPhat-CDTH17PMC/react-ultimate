@@ -108,12 +108,16 @@ const ManageUser = (props) => {
   };
 
   const fetchListUsersWithPaginate = async (page) => {
-    let res = await getAllUsersWithPaginate(page, LIMIT_USER);
-    if (res && res.EC === 0) {
-      setListUsers(res.DT.users);
-      setPageCount(res.DT.totalPages);
-    } else {
-      toast.error("Data not found!");
+    try {
+      let res = await getAllUsersWithPaginate(page, LIMIT_USER);
+      if (res && res.EC === 0) {
+        setListUsers(res.DT.users);
+        setPageCount(res.DT.totalPages);
+      } else {
+        toast.error("Data not found!");
+      }
+    } catch (e) {
+      // oh no, the fetch failed! We should do something about it!
     }
   };
 
@@ -144,7 +148,7 @@ const ManageUser = (props) => {
   };
 
   return (
-    <div className="manage-user-container">
+    <div className="manage-user-container container">
       <div className="title">Manage User</div>
       <div className="users-content">
         <div className="btn-add-new">

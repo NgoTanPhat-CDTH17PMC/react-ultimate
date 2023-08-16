@@ -1,6 +1,7 @@
 .list-quiz-container {
-    display: flex;
-    gap    : 50px;
+    display  : flex;
+    flex-wrap: wrap;
+    gap      : 50px;
 
     .list-quiz-none {
         margin-top    : 24px;

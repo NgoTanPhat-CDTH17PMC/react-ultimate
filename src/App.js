@@ -6,6 +6,7 @@ import "./App.scss";
 import React from "react";
 import Header from "./components/Header/Header";
 import { Link, Outlet } from "react-router-dom";
+import PerfectScrollBar from "react-perfect-scrollbar";
 
 class App extends React.Component {
   render() {
@@ -18,7 +19,9 @@ class App extends React.Component {
         <div className="main-container">
           <div className="sidenav-container"></div>
           <div className="app-content container">
-            <Outlet />
+            <PerfectScrollBar>
+              <Outlet />
+            </PerfectScrollBar>
           </div>
         </div>
         <div>
