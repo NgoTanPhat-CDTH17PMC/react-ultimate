@@ -14,7 +14,8 @@ import { PersistGate } from "redux-persist/integration/react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    {/* <PersistGate loading={null} persistor={persistor}> */}
+    {/* <PersistGate loading={null} persistor={persistor}> */}{" "}
+    {/*Nó sẽ delay quá trình render UI app của bạn cho đến khi state đã được lấy ra và lưu trở lại vào Redux.*/}
     <BrowserRouter>
       <Layout />
     </BrowserRouter>

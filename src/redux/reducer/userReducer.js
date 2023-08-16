@@ -29,6 +29,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         usAuthenticated: true,
       };
 
+    case INCREMENT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+
     case DECREMENT:
       return {
         ...state,

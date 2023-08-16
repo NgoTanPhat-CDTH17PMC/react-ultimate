@@ -152,7 +152,7 @@ const Question = (props) => {
     }
     if (type === "REMOVE") {
       let questionsClone = _.cloneDeep(questions);
-      questionsClone = questionsClone.filter((item) => item.id != id);
+      questionsClone = questionsClone.filter((item) => item.id !== id);
       setQuestions(questionsClone);
     }
   };
@@ -174,7 +174,7 @@ const Question = (props) => {
       let index = questionsClone.findIndex((item) => item.id === questionId);
       if (index > -1) {
         questionsClone[index].answers = questionsClone[index].answers.filter(
-          (item) => item.id != answerId
+          (item) => item.id !== answerId
         );
         setQuestions(questionsClone);
       }

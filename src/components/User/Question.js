@@ -15,7 +15,10 @@ const Question = (props) => {
     <>
       <div className="q-image">
         {data.quizImage && (
-          <img srcc={`data:image/jpeg;basee64,${data.quizImage}`} />
+          <img
+            src={`data:image/jpeg;base64,${data.quizImage}`}
+            alt={data.description}
+          />
         )}
       </div>
 

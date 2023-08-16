@@ -9,12 +9,12 @@ import Accordion from "react-bootstrap/Accordion";
 import QuizQA from "./QuizQA";
 import AssignQuiz from "./AssignQuiz";
 
-const options = [
-  { value: "EASY", label: "EASY" },
-  { value: "MEDIUM", label: "MEDIUM" },
-  { value: "HARD", label: "HARD" },
-];
 const ManageQuiz = () => {
+  const options = [
+    { value: "EASY", label: "EASY" },
+    { value: "MEDIUM", label: "MEDIUM" },
+    { value: "HARD", label: "HARD" },
+  ];
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [type, setType] = useState("EASY");
