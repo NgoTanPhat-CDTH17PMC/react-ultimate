@@ -13,6 +13,7 @@ import {
   getQuizWithQA,
   postCreateNewAnswerForQuestion,
   postCreateNewQuestionForQuiz,
+  postUpsertQA,
 } from "../../../../sevices/apiServices";
 import { toast } from "react-toastify";
 const QuizQA = (props) => {
@@ -134,13 +135,6 @@ const QuizQA = (props) => {
       .then((res) => res.arrayBuffer())
       .then((buf) => new File([buf], filename, { type: mimeType }));
   }
-
-  //Usage example:
-  urltoFile("data:text/plain;base64,aGVsbG8=", "hello.txt", "text/plain").then(
-    function (file) {
-      console.log(file);
-    }
-  );
 
   const fetchQuizWithQA = async () => {
     let res = await getQuizWithQA(selectedQuiz.value);
@@ -376,24 +370,53 @@ const QuizQA = (props) => {
     //   })
     // );
 
-    // de chay tuan tu thi phai chay for each
+    // khong dung map nua, de chay tuan tu thi phai chay for each
     //submit question
-    for (const question of questions) {
-      const q = await postCreateNewQuestionForQuiz(
-        +selectedQuiz.value,
-        question.description,
-        question.imageFile
-      );
+    // for (const question of questions) {
+    //   const q = await postCreateNewQuestionForQuiz(
+    //     +selectedQuiz.value,
+    //     question.description,
+    //     question.imageFile
+    //   );
 
-      // submit answer
-      for (const answer of question.answers) {
-        await postCreateNewAnswerForQuestion();
+    //   // submit answer
+    //   for (const answer of question.answers) {
+    //     await postCreateNewAnswerForQuestion();
+    //   }
+    // }
+
+    // doi lai xai api moi
+    let questionsClone = _.cloneDeep(questions);
+    for (let i = 0; i < questionsClone.length; i++) {
+      if (questionsClone[i].imageFile) {
+        questionsClone[i].imageFile = await toBase64(
+          questionsClone[i].imageFile
+        );
       }
     }
+    let res = await postUpsertQA({
+      quizId: selectedQuiz.value,
+      question: questionsClone,
+    });
 
-    toast.success("create question and answer succeed!");
-    setQuestions(initQuestions);
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      getQuizWithQA();
+    } else {
+      toast.error(res.EM);
+    }
+    // toast.success("create question and answer succeed!");
+    // setQuestions(initQuestions);
   };
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+    });
+
   return (
     <div className="question-container containenr">
       <div className="add-new-question">

@@ -81,11 +81,16 @@ const TableQuiz = (props) => {
   const fetchQuiz = async () => {
     setDataDelete({});
     setDataUpdate({});
-    let res = await getAllQuiz();
-    if (res && res.EC === 0) {
-      setListQuiz(res.DT);
-    } else {
-      toast.error(res.EC);
+    try {
+      let res = await getAllQuiz();
+      if (res && res.EC === 0) {
+        setListQuiz(res.DT);
+      } else {
+        toast.error(res.EC);
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error(e.message);
     }
   };
 
