@@ -26,6 +26,7 @@
                 .a-child {
                     text-align : left;
                     margin-left: 50px;
+                    user-select: none;
                 }
             }
         }
@@ -77,10 +78,19 @@
                 align-items    : center;
                 justify-content: center;
                 border-radius  : 50%;
+                cursor         : pointer;
+                user-select    : none;
 
                 &:hover {
-                    border-color: red;
-                    color       : red;
+                    color: red;
+                }
+
+                &.selected {
+                    background-color: #c6c6c6
+                }
+
+                &.clicked {
+                    color: red;
                 }
             }
         }

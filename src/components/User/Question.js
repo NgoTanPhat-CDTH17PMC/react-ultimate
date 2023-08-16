@@ -39,9 +39,9 @@ const Question = (props) => {
         Question {index + 1}: {data.questionDescription}
       </div>
       <div className="answer">
-        {data.answer &&
-          data.answer.length > 0 &&
-          data.answer.map((a, index) => {
+        {data.answers &&
+          data.answers.length > 0 &&
+          data.answers.map((a, index) => {
             return (
               <div key={`answer-${index}`} className="a-child">
                 <div className="form-check">
@@ -54,7 +54,10 @@ const Question = (props) => {
                     }}
                     id={`answer-${index}`}
                   />
-                  <label className="form-check-label" for={`answer-${index}`}>
+                  <label
+                    className="form-check-label"
+                    htmlFor={`answer-${index}`}
+                  >
                     {a.description}
                   </label>
                 </div>
