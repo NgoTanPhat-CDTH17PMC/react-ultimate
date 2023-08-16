@@ -6,6 +6,7 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { RiImageAddFill } from "react-icons/ri";
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
+import Lightbox from "react-awesome-lightbox";
 const Question = (props) => {
   const options = [
     { value: "test", label: "test" },
@@ -14,7 +15,7 @@ const Question = (props) => {
 
   const [selectedQuiz, setSelectedQuiz] = useState({});
 
-  const [questions, setQuestion] = useState([
+  const [questions, setQuestions] = useState([
     {
       id: uuidv4(),
       description: "",
@@ -30,6 +31,11 @@ const Question = (props) => {
     },
   ]);
 
+  const [isPreviewImage, setIsPreviewImage] = useState(false);
+  const [dataImagePreview, setDataImagePreview] = useState({
+    title: "",
+    url: "",
+  });
   const handleAddRemoveQuestion = (type, id) => {
     if (type === "ADD") {
       const newQuestion = {
@@ -45,12 +51,12 @@ const Question = (props) => {
           },
         ],
       };
-      setQuestion([...questions, newQuestion]);
+      setQuestions([...questions, newQuestion]);
     }
     if (type === "REMOVE") {
       let questionsClone = _.cloneDeep(questions);
       questionsClone = questionsClone.filter((item) => item.id != id);
-      setQuestion(questionsClone);
+      setQuestions(questionsClone);
     }
   };
 
@@ -65,7 +71,7 @@ const Question = (props) => {
 
       let index = questionsClone.findIndex((item) => item.id === questionId);
       questionsClone[index].answers.push(newAnswer);
-      setQuestion(questionsClone);
+      setQuestions(questionsClone);
     }
     if (type === "REMOVE") {
       let index = questionsClone.findIndex((item) => item.id === questionId);
@@ -73,7 +79,7 @@ const Question = (props) => {
         questionsClone[index].answers = questionsClone[index].answers.filter(
           (item) => item.id != answerId
         );
-        setQuestion(questionsClone);
+        setQuestions(questionsClone);
       }
     }
   };
@@ -127,6 +133,20 @@ const Question = (props) => {
       setQuestions(questionsClone);
     }
   };
+
+  const handlePreviewImage = (questionId) => {
+    let questionsClone = _.cloneDeep(questions);
+    let index = questionsClone.findIndex((item) => item.id == questionId);
+
+    if (index > -1) {
+      setDataImagePreview({
+        url: URL.createObjectURL(questionsClone[index].imageFile),
+        title: questionsClone[index].imageName,
+      });
+
+      setIsPreviewImage(true);
+    }
+  };
   const handleSubmitQuestionForQuiz = () => {};
   return (
     <div className="question-container containenr">
@@ -178,9 +198,17 @@ const Question = (props) => {
                       }
                     />
                     <span>
-                      {question.imageName
-                        ? question.imageName
-                        : "0 file is uploaded"}
+                      {question.imageName ? (
+                        <span
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handlePreviewImage(question.id)}
+                        >
+                          {" "}
+                          {question.imageName}{" "}
+                        </span>
+                      ) : (
+                        "0 file is uploaded"
+                      )}
                     </span>
                   </div>
                   <div className="btn-add">
@@ -268,7 +296,7 @@ const Question = (props) => {
             );
           })}
 
-        {question && questions.length > 0 && (
+        {questions && questions.length > 0 && (
           <div>
             <button
               className="btn btn-warning has-custom"
@@ -277,6 +305,14 @@ const Question = (props) => {
               Save Question
             </button>
           </div>
+        )}
+
+        {isPreviewImage === true && (
+          <Lightbox
+            image={dataImagePreview.url}
+            title={dataImagePreview.title}
+            onClose={() => setIsPreviewImage(false)}
+          ></Lightbox>
         )}
       </div>
     </div>
