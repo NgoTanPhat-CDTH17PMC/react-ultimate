@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getQuizByUser } from "../../sevices/apiServices";
 import { useNavigate } from "react-router-dom";
 import "./ListQuiz.scss";
+import { toast } from "react-toastify";
 
 const ListQuiz = (props) => {
   const navigate = useNavigate();
@@ -42,9 +43,13 @@ const ListQuiz = (props) => {
   }, []);
 
   const getQuizData = async () => {
-    let res = await getQuizByUser();
-    if (res && res.EC === 0) {
-      setArrQuiz(res.DT);
+    try {
+      let res = await getQuizByUser();
+      if (res && res.EC === 0) {
+        setArrQuiz(res.DT);
+      }
+    } catch (e) {
+      toast.error(e.message);
     }
   };
   return (

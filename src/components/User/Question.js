@@ -1,27 +1,40 @@
 import _ from "lodash";
+import { useState } from "react";
+import Lightbox from "react-awesome-lightbox";
 
 const Question = (props) => {
-  const { data, index } = props;
+  const { data, index, handleCheckbox } = props;
+  const [isPreviewImage, setIsPreviewImage] = useState(false);
 
   if (_.isEmpty(data)) {
     return <></>;
   }
 
-  const handleHandleCheckbox = (event, aId, qId) => {
-    props.handleCheckbox(aId, qId); // day len cho compoent cha xu ly
+  const handleHandleCheckbox = (aId, qId) => {
+    handleCheckbox(aId, qId); // day len cho compoent cha xu ly
   };
 
   return (
     <>
-      <div className="q-image">
-        {data.quizImage && (
+      {data.image ? (
+        <div className="q-image">
           <img
-            src={`data:image/jpeg;base64,${data.quizImage}`}
+            style={{ cursor: "pointer" }}
+            onClick={() => setIsPreviewImage(true)}
+            src={`data:image/jpeg;base64,${data.image}`}
             alt={data.description}
           />
-        )}
-      </div>
-
+          {isPreviewImage === true && (
+            <Lightbox
+              image={`data:image/jpeg;base64,${data.image}`}
+              title={data.description}
+              onClose={() => setIsPreviewImage(false)}
+            ></Lightbox>
+          )}{" "}
+        </div>
+      ) : (
+        ""
+      )}
       <div className="question">
         Question {index + 1}: {data.questionDescription}
       </div>
@@ -37,7 +50,7 @@ const Question = (props) => {
                     type="checkbox"
                     checked={a.isSelected} // kiem tra xem nguoi dung  co check hay chua
                     onChange={(event) => {
-                      handleHandleCheckbox(event, a.id, data.questionId);
+                      handleHandleCheckbox(a.id, data.questionId);
                     }}
                     id={`answer-${index}`}
                   />

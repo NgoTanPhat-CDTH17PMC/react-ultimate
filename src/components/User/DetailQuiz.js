@@ -7,6 +7,7 @@ import Question from "./Question";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import ModalResult from "../Admin/Content/ModalResult";
+import RightContent from "./Content/RightContent";
 
 /*
 "DT": {
@@ -24,7 +25,74 @@ const DetailQuiz = (props) => {
   const quizId = param.id;
   const location = useLocation(); // muon biet nguoi dung tu trang nao den
 
-  const [dataQuiz, setDataQuiz] = useState([]);
+  const [dataQuiz, setDataQuiz] = useState([
+    {
+      questionId: "1",
+      questionDescription: "Day la ai ease",
+      image: null,
+      answer: [
+        {
+          id: "1",
+          description: "dap an 1",
+          isSelected: false,
+        },
+        {
+          id: "2",
+          description: "dap an 2",
+          isSelected: false,
+        },
+        {
+          id: "3",
+          description: "dap an 3",
+          isSelected: false,
+        },
+      ],
+    },
+    {
+      questionId: "2",
+      questionDescription: "Toi la ai ease",
+      image: null,
+      answer: [
+        {
+          id: "1",
+          description: "dap an 1",
+          isSelected: false,
+        },
+        {
+          id: "2",
+          description: "dap an 2",
+          isSelected: false,
+        },
+        {
+          id: "3",
+          description: "dap an 3",
+          isSelected: false,
+        },
+      ],
+    },
+    {
+      questionId: "3",
+      questionDescription: "Di dau day....",
+      image: null,
+      answer: [
+        {
+          id: "1",
+          description: "dap an 1",
+          isSelected: false,
+        },
+        {
+          id: "2",
+          description: "dap an 2",
+          isSelected: false,
+        },
+        {
+          id: "3",
+          description: "dap an 3",
+          isSelected: false,
+        },
+      ],
+    },
+  ]);
   const [index, setIndex] = useState(0); // check xem dang o cau hoi so index
   const [dataModalResult, setDataModalResult] = useState(false);
 
@@ -35,34 +103,38 @@ const DetailQuiz = (props) => {
   }, [quizId]);
 
   const fetchQuestion = async () => {
-    let res = await getDataQuiz(quizId);
-    if (res && res.EC === 0) {
-      let raw = res.DT;
-      let data = _.chain(raw)
-        .groupBy("id")
-        .map((value, key) => {
-          let answer = [];
-          let questionDescription,
-            image = null;
-          value.forEach((item, index) => {
-            if (index === 0) {
-              questionDescription = item.description;
-              image = item.image;
-            }
-            item.answer.isSelected = false;
-            answer.push(item.answer);
-          });
+    try {
+      let res = await getDataQuiz(quizId);
+      if (res && res.EC === 0) {
+        let raw = res.DT;
+        let data = _.chain(raw)
+          .groupBy("id")
+          .map((value, key) => {
+            let answer = [];
+            let questionDescription,
+              image = null;
+            value.forEach((item, index) => {
+              if (index === 0) {
+                questionDescription = item.description;
+                image = item.image;
+              }
+              item.answer.isSelected = false;
+              answer.push(item.answer);
+            });
 
-          return {
-            questionId: key,
-            answer,
-            questionDescription,
-            image,
-          };
-        })
-        .value(); // gop theo ID
-      //https://prnt.sc/skqoy6QDG9rk
-      setDataQuiz(data);
+            return {
+              questionId: key,
+              answer,
+              questionDescription,
+              image,
+            };
+          })
+          .value(); // gop theo ID
+        //https://prnt.sc/skqoy6QDG9rk
+        setDataQuiz(data);
+      }
+    } catch (e) {
+      toast.error(e.message);
     }
   };
 
@@ -74,7 +146,7 @@ const DetailQuiz = (props) => {
   };
 
   const handleNext = () => {
-    if (dataQuiz && dataQuiz.lenngth > index + 1) {
+    if (dataQuiz && dataQuiz.length > index + 1) {
       setIndex(index + 1);
     }
   };
@@ -84,11 +156,11 @@ const DetailQuiz = (props) => {
     let question = dataQuizClone.find(
       (item) => +item.questionId === +questionId
     ); // tim cau hoi vua chon tu Question
-    if (question && question.answers) {
-      let b = question.answers.map((item) => {
+    if (question && question.answer) {
+      let b = question.answer.map((item) => {
         // tim cau hoi
         if (+item.id === +answerId) {
-          item.selected = !item.isSelected; // update cau tra loi
+          item.isSelected = !item.isSelected; // update cau tra loi
         }
         return item;
       });
@@ -98,6 +170,8 @@ const DetailQuiz = (props) => {
     let index = dataQuizClone.findIndex(
       (item) => +item.questionId === questionId
     );
+
+    console.log(question);
     if (index > -1) {
       dataQuizClone[index] = question; // question da duoc cap nhat o tren ne duoc gan vao data
       setDataQuiz(dataQuizClone); // update lai ket qua cho cau hoi
@@ -134,16 +208,20 @@ const DetailQuiz = (props) => {
 
     // submit api
 
-    let res = await postSubmitQuiz(payload);
-    if (res && res.EC === 0) {
-      setDataModalResult({
-        countCorrect: res.DT.countCorrect,
-        countTotal: res.DT.countTotal,
-        quizData: res.DT.quizData,
-      });
-      setIsShowModalResult(true);
-    } else {
-      toast.error("some thing wrongs...");
+    try {
+      let res = await postSubmitQuiz(payload);
+      if (res && res.EC === 0) {
+        setDataModalResult({
+          countCorrect: res.DT.countCorrect,
+          countTotal: res.DT.countTotal,
+          quizData: res.DT.quizData,
+        });
+        setIsShowModalResult(true);
+      } else {
+        toast.error("some thing wrongs...");
+      }
+    } catch (e) {
+      toast.error(e.message);
     }
     /*
     {
@@ -175,7 +253,7 @@ const DetailQuiz = (props) => {
     <div className="detail-quiz-container">
       <div className="left-content">
         <div className="title">
-          Quiz {quizId.id}: {location?.state.quizTitle}
+          Quiz {quizId}: {location?.state.quizTitle}
         </div>
         <hr />
         <div className="q-body">
@@ -185,6 +263,7 @@ const DetailQuiz = (props) => {
           <Question
             handleCheckbox={handleCheckbox}
             data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[index] : []}
+            index={index}
           />
         </div>
         <div className="footer">
@@ -199,7 +278,9 @@ const DetailQuiz = (props) => {
           </button>
         </div>
       </div>
-      <div className="right-content">count down</div>
+      <div className="right-content">
+        <RightContent dataQuiz={dataQuiz} />
+      </div>
 
       <ModalResult
         show={isShowModalResult}
