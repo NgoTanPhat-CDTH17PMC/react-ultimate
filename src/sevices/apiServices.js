@@ -148,6 +148,10 @@ const getOverview = () => {
   return axios.get(`api/v1/overview`);
 };
 
+const getHistory = () => {
+  return axios.get(`api/v1/history`);
+};
+
 export {
   postCreateNewUser,
   getAllUsers,
@@ -170,4 +174,5 @@ export {
   getQuizWithQA,
   postUpsertQA,
   getOverview,
+  getHistory,
 };
