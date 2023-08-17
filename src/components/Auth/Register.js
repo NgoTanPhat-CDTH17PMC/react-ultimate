@@ -4,6 +4,7 @@ import "./Register.scss";
 import { postRegister } from "../../sevices/apiServices";
 import { toast } from "react-toastify";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import Language from "../Header/Language";
 
 const Register = (props) => {
   const [username, setUsername] = useState("");
@@ -54,6 +55,7 @@ const Register = (props) => {
       <div className="header col-12 mx-auto">
         <span>Have an account?</span>
         <button onClick={() => handleLogin()}>Login</button>
+        <Language />
       </div>
       <div className="title col-5 mx-auto">HoiDanIt</div>
       <div className="welcome col-5 mx-auto">

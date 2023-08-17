@@ -211,3 +211,15 @@ Luu tat ca thong tin cua user thong qua key vao Local Storage
 
 persistGate
 Ung dung chi chay khi data cuar redux duoc nap thanh cong (tranh bug khi bi lag)
+
+===================================
+
+Language
+
+i18next: thang cha
+
+react-i18next: tich hop voi react
+
+i18next-browser-languagedetector: check xem browser cua user dang dung ngon ngu gi
+
+i18nex-http-backend: chia tach cac file dich ra

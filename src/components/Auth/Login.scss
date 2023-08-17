@@ -11,12 +11,11 @@
 .login-container {
     .header {
         height         : 45px;
-        text-align     : right;
-        border         : 1px solid red;
         padding        : 30px 100px;
         display        : flex;
         align-items    : center;
         justify-content: flex-end;
+        gap            : 10px;
 
         button {
             border          : none;
