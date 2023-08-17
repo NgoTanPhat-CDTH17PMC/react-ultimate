@@ -4,23 +4,25 @@
     .title {
         font-size  : 20px;
         font-weight: 600;
-
     }
 
     .content {
 
         .c-left {
-            border: 1px solid red;
-            height: 300px;
+            gap: 20px;
 
             .child {
-                height: 150px
+                height: 150px;
+                width : calc(50% - 10px);
+
+                .text-2 {
+                    font-size: 25px;
+                }
             }
         }
 
         .c-right {
-            border: 1px solid red;
-            height: 300px;
+            padding: 10px;
         }
     }
 }

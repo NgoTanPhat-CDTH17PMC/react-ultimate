@@ -45,7 +45,7 @@ const deleteUser = (userId) => {
 };
 
 const postLogin = (userEmail, userPassword) => {
-  return axios.post(`/api/v1/login`, {
+  return axios.post(`api/v1/login`, {
     email: userEmail,
     password: userPassword,
     delay: 5000,
@@ -53,7 +53,7 @@ const postLogin = (userEmail, userPassword) => {
 };
 
 const postRegister = (userUsername, userEmail, userPassword) => {
-  return axios.post(`/api/v1/register`, {
+  return axios.post(`api/v1/register`, {
     username: userUsername,
     email: userEmail,
     password: userPassword,
@@ -61,19 +61,19 @@ const postRegister = (userUsername, userEmail, userPassword) => {
 };
 
 const getQuizByUser = () => {
-  return axios.get(`/api/v1/quiz-by-participant`);
+  return axios.get(`api/v1/quiz-by-participant`);
 };
 
 const getAllQuiz = () => {
-  return axios.get(`/api/v1/quiz/all`);
+  return axios.get(`api/v1/quiz/all`);
 };
 
 const getDataQuiz = (quizId) => {
-  return axios.get(`/api/v1/questions-by-quiz?quizId=${quizId}`);
+  return axios.get(`api/v1/questions-by-quiz?quizId=${quizId}`);
 };
 
 const postSubmitQuiz = (data) => {
-  return axios.post(`/api/v1/quiz-submit`, { ...data });
+  return axios.post(`api/v1/quiz-submit`, { ...data });
 };
 
 const postCreateNewQuiz = (description, name, difficulty, image) => {
@@ -144,6 +144,10 @@ const postUpsertQA = (data) => {
   return axios.post(`api/v1/quiz-upsert-qa`, { ...data });
 };
 
+const getOverview = () => {
+  return axios.get(`api/v1/overview`);
+};
+
 export {
   postCreateNewUser,
   getAllUsers,
@@ -165,4 +169,5 @@ export {
   postAssignQuiz,
   getQuizWithQA,
   postUpsertQA,
+  getOverview,
 };
