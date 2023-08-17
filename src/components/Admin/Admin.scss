@@ -26,9 +26,18 @@
         width: 100%;
 
         .admin-header {
-            height: 40px;
-            border: 1px solid green;
+            height       : 60px;
+            border-bottom: 1px solid #cccccc;
+            padding      : 0 20px 0px 10px;
         }
+
+        .leftSide {
+            cursor   : pointer;
+            font-size: 20px;
+            color    : #666666
+        }
+
+        .rightSide {}
 
         .admin-main {
             border: 1px solid transparent;

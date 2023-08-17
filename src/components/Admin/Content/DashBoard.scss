@@ -1,0 +1,26 @@
+.dashboard-container {
+    padding-top: 30px;
+
+    .title {
+        font-size  : 20px;
+        font-weight: 600;
+
+    }
+
+    .content {
+
+        .c-left {
+            border: 1px solid red;
+            height: 300px;
+
+            .child {
+                height: 150px
+            }
+        }
+
+        .c-right {
+            border: 1px solid red;
+            height: 300px;
+        }
+    }
+}
