@@ -54,6 +54,12 @@ const Login = (props) => {
   const handleRegister = () => {
     navigate("/register");
   };
+
+  const handleKeyDown = (event) => {
+    if (event && event.keyCode === 13) {
+      handleLogin();
+    }
+  };
   return (
     <div className="login-container">
       <div className="header col-12 mx-auto">
@@ -78,6 +84,7 @@ const Login = (props) => {
             type={"password"}
             className="form-control"
             value={password}
+            onKeyDown={(event) => handleKeyDown(event)}
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>

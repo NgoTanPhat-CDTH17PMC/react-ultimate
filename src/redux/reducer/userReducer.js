@@ -1,5 +1,8 @@
 import { INCREMENT, DECREMENT } from "../action/counterAction";
-import { FETCH_USER_LOGIN_SUCCESS } from "../action/userAction";
+import {
+  FETCH_USER_LOGIN_SUCCESS,
+  USER_LOGOUT_SUCCESS,
+} from "../action/userAction";
 const INITIAL_STATE = {
   // khoi tạo state
   account: {
@@ -8,8 +11,9 @@ const INITIAL_STATE = {
     username: "",
     image: "",
     role: "",
+    email: "",
   },
-  usAuthenticated: false,
+  isAuthenticated: false,
 };
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (
@@ -25,8 +29,23 @@ const userReducer = (state = INITIAL_STATE, action) => {
           username: action?.payload?.DT?.username,
           image: action?.payload?.DT?.image,
           role: action?.payload?.DT?.role,
+          email: action?.payload?.DT?.email,
         },
-        usAuthenticated: true,
+        isAuthenticated: true,
+      };
+
+    case USER_LOGOUT_SUCCESS:
+      return {
+        ...state,
+        account: {
+          access_token: "",
+          refresh_token: "",
+          username: "",
+          image: "",
+          role: "",
+          email: "",
+        },
+        isAuthenticated: false,
       };
 
     case INCREMENT:
