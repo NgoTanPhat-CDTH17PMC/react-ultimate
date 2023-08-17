@@ -1,6 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../sevices/apiServices";
@@ -71,8 +72,15 @@ const Header = () => {
                 </button>
               </>
             ) : (
-              <Language />
+              <NavDropdown title="Settings" id="basic-nav-dropdown">
+                <NavDropdown.Item>Profile</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={() => handleLogout()}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
             )}
+            <Language />
           </Nav>
         </Navbar.Collapse>
       </Container>
